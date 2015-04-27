@@ -2,9 +2,9 @@
 
 import os
 
-from qiniu import config
-from qiniu.utils import urlsafe_base64_encode, crc32, file_crc32, _file_iter
-from qiniu import http
+from qiniu7 import config
+from qiniu7.utils import urlsafe_base64_encode, crc32, file_crc32, _file_iter
+from qiniu7 import http
 
 
 def put_data(

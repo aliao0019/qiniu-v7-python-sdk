@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 
-from qiniu import config
-from qiniu.utils import urlsafe_base64_encode, entry
-from qiniu import http
+from qiniu7 import config
+from qiniu7.utils import urlsafe_base64_encode, entry
+from qiniu7 import http
 
 
 class BucketManager(object):

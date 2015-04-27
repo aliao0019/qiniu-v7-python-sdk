@@ -9,16 +9,16 @@ import requests
 import unittest
 import pytest
 
-from qiniu import Auth, set_default, etag, PersistentFop, build_op, op_save
-from qiniu import put_data, put_file, put_stream
-from qiniu import BucketManager, build_batch_copy, build_batch_rename, build_batch_move, build_batch_stat, build_batch_delete
-from qiniu import urlsafe_base64_encode, urlsafe_base64_decode
+from qiniu7 import Auth, set_default, etag, PersistentFop, build_op, op_save
+from qiniu7 import put_data, put_file, put_stream
+from qiniu7 import BucketManager, build_batch_copy, build_batch_rename, build_batch_move, build_batch_stat, build_batch_delete
+from qiniu7 import urlsafe_base64_encode, urlsafe_base64_decode
 
-from qiniu.compat import is_py2, b
+from qiniu7.compat import is_py2, b
 
-from qiniu.services.storage.uploader import _form_put
+from qiniu7.services.storage.uploader import _form_put
 
-import qiniu.config
+import qiniu7.config
 
 if is_py2:
     import sys
@@ -268,7 +268,7 @@ class UploaderTestCase(unittest.TestCase):
         print(info)
         assert ret['key'] == key
         assert ret['hash'] == 'FlYu0iBR1WpvYi4whKXiBuQpyLLk'
-        qiniu.set_default(default_up_host=qiniu.config.UPAUTO_HOST)
+        qiniu7.set_default(default_up_host=qiniu7.config.UPAUTO_HOST)
 
 
 class ResumableUploaderTestCase(unittest.TestCase):
@@ -292,23 +292,23 @@ class ResumableUploaderTestCase(unittest.TestCase):
         token = self.q.upload_token(bucket_name, key)
         localfile = create_temp_file(4 * 1024 * 1024 + 1)
         progress_handler = lambda progress, total: progress
-        qiniu.set_default(default_up_host='a')
+        qiniu7.set_default(default_up_host='a')
         ret, info = put_file(token, key, localfile, self.params, self.mime_type, progress_handler=progress_handler)
         print(info)
         assert ret['key'] == key
-        qiniu.set_default(default_up_host=qiniu.config.UPAUTO_HOST)
+        qiniu7.set_default(default_up_host=qiniu7.config.UPAUTO_HOST)
         remove_temp_file(localfile)
 
     def test_retry(self):
         localfile = __file__
         key = 'test_file_r_retry'
-        qiniu.set_default(default_up_host='a')
+        qiniu7.set_default(default_up_host='a')
         token = self.q.upload_token(bucket_name, key)
         ret, info = put_file(token, key, localfile, self.params, self.mime_type)
         print(info)
         assert ret['key'] == key
         assert ret['hash'] == etag(localfile)
-        qiniu.set_default(default_up_host=qiniu.config.UPAUTO_HOST)
+        qiniu7.set_default(default_up_host=qiniu7.config.UPAUTO_HOST)
 
 
 class DownloadTestCase(unittest.TestCase):

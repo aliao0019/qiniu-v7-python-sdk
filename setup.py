@@ -14,10 +14,10 @@ except ImportError:
 
 
 packages = [
-    'qiniu',
-    'qiniu.services',
-    'qiniu.services.storage',
-    'qiniu.services.processing',
+    'qiniu7',
+    'qiniu7.services',
+    'qiniu7.services.storage',
+    'qiniu7.services.processing',
 ]
 
 
@@ -38,15 +38,15 @@ def find_version(*file_paths):
 
 
 setup(
-    name='qiniu',
-    version=find_version("qiniu/__init__.py"),
+    name='qiniu7',
+    version=find_version("qiniu7/__init__.py"),
     description='Qiniu Resource Storage SDK',
     long_description='see:\nhttps://github.com/qiniu/python-sdk\n',
     author='Shanghai Qiniu Information Technologies Co., Ltd.',
     author_email='sdk@qiniu.com',
     maintainer_email='support@qiniu.com',
     license='MIT',
-    url='https://github.com/qiniu/python-sdk',
+    url='https://github.com/aliao0019/qiniu-v7-python-sdk',
     platforms='any',
     packages=packages,
     classifiers=[
@@ -67,7 +67,7 @@ setup(
 
     entry_points={
         'console_scripts': [
-            'qiniupy = qiniu.main:main',
+            'qiniupy = qiniu7.main:main',
         ],
     }
 )

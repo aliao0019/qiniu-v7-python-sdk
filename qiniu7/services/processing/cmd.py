@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-from qiniu.utils import entry
+from qiniu7.utils import entry
 
 
 def build_op(cmd, first_arg, **kwargs):
